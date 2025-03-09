@@ -1,0 +1,65 @@
+# Airport API Testing Project
+
+## Overview
+This project is a test automation suite for the AirportGap API. It includes test cases for retrieving airport information, calculating distances between airports, and managing favorite airports. The project is built using `pytest` and leverages API request validation, authentication handling, and performance monitoring.
+
+## Project Structure
+```
+.
+airports.json               -> Test data for airports
+airports_distance.json      -> Test data for airport distances
+favourites.json             -> Test data for favorite airports
+conftest.py                 -> Pytest fixtures for authentication and test setup
+test_api.py                 -> Test cases for API endpoints
+pytest.ini                  -> Pytest configuration
+dockerfile                  -> Docker configuration (if applicable)
+```
+
+## Features
+- Retrieve airport details via API.
+- Calculate the distance between airports using the Haversine formula.
+- Manage favorite airports (create, update, delete, and clear all).
+- Automated authentication handling.
+- Performance monitoring with slow test threshold tracking.
+
+## Installation & Setup
+### Prerequisites
+Ensure you have Python installed (>=3.7). Install the dependencies using:
+```sh
+pip install -r requirements.txt
+```
+If using Docker:
+```sh
+docker build -t airport-tests .
+docker run --rm airport-tests
+```
+
+## Running Tests
+Run the tests using pytest:
+```sh
+pytest
+```
+To generate an HTML report:
+```sh
+pytest --html=report.html --self-contained-html
+```
+
+## Test Configuration
+- Authentication credentials are defined in `conftest.py`. These should be stored securely.
+- `pytest.ini` includes custom configurations for test execution.
+- `conftest.py` provides fixtures for API authentication and test setup.
+
+## API Test Cases
+- **Airport Retrieval**: Ensures airports are fetched correctly.
+- **Distance Calculation**: Validates API-provided distances against the Haversine formula.
+- **Favorites Management**: CRUD operations on favorite airports.
+- **Performance Tracking**: Flags slow-running tests.
+
+## Improvements
+Where do we start:
+- Credentials are hardcoded in conftest.py, which is a security risk.
+- API response assertions assume expected status codes, but missing handling for unexpected errors.
+- test_get_airport_by_id and test_post_airports_distance iterate over JSON test data manually, would be better to do this how i did it in the GUI test suite and use pytest params
+- Check response structures, my current tests only check for key presence, not their structure.
+- Better performance tracking, currently im logging the slow runners, but not enforcing failure.
+- Get it in CI/CD.

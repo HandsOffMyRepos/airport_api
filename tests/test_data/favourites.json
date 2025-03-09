@@ -1,0 +1,13 @@
+[
+    {
+      "airport_id": "JFK",
+      "note": "Favorite for business travel",
+      "updated_note": "Updated note business"
+    },
+    {
+      "airport_id": "LAX",
+      "note": "Vacation hub",
+      "updated_note": "Updated vacation note"
+    }
+  ]
+  
