@@ -30,8 +30,8 @@ pip install -r requirements.txt
 ```
 If using Docker:
 ```sh
-docker build -t airport-tests .
-docker run --rm airport-tests
+docker build -t airport-api .
+docker run --rm airport-api
 ```
 
 ## Running Tests
